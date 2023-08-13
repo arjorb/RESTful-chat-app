@@ -5,7 +5,7 @@ const chatSchema = new Schema(
   {
     sender: { type: 'string', required: true },
     receiver: { type: 'string', required: true },
-    messsage: { type: 'string', required: true },
+    message: { type: 'string', required: true },
   },
   { timestamps: true }
 );
