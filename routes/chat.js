@@ -1,11 +1,9 @@
 const express = require('express');
-
+const Blog = require('../models/chat');
 const route = express.Router();
 
 //getting routes
 route.get('/', (req, res) => {
-  res
-    .status(200)
-    .send('You are able to acces ths request from the routing service');
+  const getChat = Blog.find().then(result => res.json(result));
 });
 module.exports = route;
