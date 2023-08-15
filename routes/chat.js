@@ -4,6 +4,8 @@ const route = express.Router();
 
 //getting routes
 route.get('/', (req, res) => {
-  const getChat = Blog.find().then(result => res.json(result));
+  Blog.find()
+    .then(result => res.send(result))
+    .catch(err => err);
 });
 module.exports = route;
