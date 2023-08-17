@@ -2,7 +2,7 @@ const express = require('express');
 const Chat = require('../models/chat');
 const route = express.Router();
 
-//getting all the items from mongoDb
+//getting all the chats from mongoDb
 route.get('/', (req, res) => {
   Chat.find()
     .then(result => res.send(result))
@@ -10,7 +10,7 @@ route.get('/', (req, res) => {
 });
 module.exports = route;
 
-//getting only the items from mongoDb
+//getting only the chat from mongoDb
 
 route.get('/:id', (req, res) => {
   Chat.findById(req.params.id)
@@ -18,7 +18,7 @@ route.get('/:id', (req, res) => {
     .catch(err => err);
 });
 
-// posting a new item to mongoDb
+// posting a new chat to mongoDb
 
 route.post('/', (req, res) => {
   const newChat = new Chat(req.body);
@@ -27,3 +27,13 @@ route.post('/', (req, res) => {
     .then(result => res.send(result))
     .catch(err => err);
 });
+
+//update a new chat to mongoDb with the new chat data
+
+route.put('/:id', (req, res) => {
+  Chat.updateOne({ _id: req.params.id }, req.body)
+    .then(result => res.send('Updated chat successfully'))
+    .catch(err => err);
+});
+
+//delete a new chat from mongoDb
