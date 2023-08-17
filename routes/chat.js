@@ -37,3 +37,8 @@ route.put('/:id', (req, res) => {
 });
 
 //delete a new chat from mongoDb
+route.delete('/:id', (req, res) => {
+  Chat.deleteOne({ _id: req.params.id })
+    .then(result => res.send('Deleted chat successfully'))
+    .catch(err => err);
+});
