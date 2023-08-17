@@ -13,6 +13,9 @@ module.exports = route;
 // posting a new item to mongoDb
 
 route.post('/', (req, res) => {
-  const newItem = req.body;
-  console.log(newItem);
+  const newChat = new Blog(req.body);
+  newChat
+    .save()
+    .then(result => res.send(result))
+    .catch(err => err);
 });
