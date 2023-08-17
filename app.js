@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const Chat = require('./models/chat');
 const dotenv = require('dotenv').config();
 const chatRoute = require('./routes/chat');
+const bodyParser = require('body-parser');
 const app = express();
+
+app.use(bodyParser.json());
 
 mongoose
   .connect(process.env.dbURI)
