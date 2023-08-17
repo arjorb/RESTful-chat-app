@@ -5,6 +5,7 @@ const {
   createChat,
   updateChat,
   deleteChat,
+  deleteAllChats,
 } = require('../controllers/chat');
 
 const route = express.Router();
@@ -21,7 +22,10 @@ route.post('/', createChat);
 //update a new chat to mongoDb with the new chat data
 route.put('/:id', updateChat);
 
-//delete a new chat from mongoDb
+//delete a chat from mongoDb
 route.delete('/:id', deleteChat);
+
+//delete all chat from mongoDb
+route.delete('/', deleteAllChats);
 
 module.exports = route;

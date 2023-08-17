@@ -27,5 +27,17 @@ const deleteChat = (req, res) => {
     .then(result => res.send('Deleted chat successfully'))
     .catch(err => err);
 };
+const deleteAllChats = (req, res) => {
+  Chat.deleteMany()
+    .then(result => res.send('Deleted all chats successfully'))
+    .catch(err => err);
+};
 
-module.exports = { getAllChat, getChat, createChat, updateChat, deleteChat };
+module.exports = {
+  getAllChat,
+  getChat,
+  createChat,
+  updateChat,
+  deleteChat,
+  deleteAllChats,
+};
