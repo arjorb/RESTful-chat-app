@@ -10,6 +10,14 @@ route.get('/', (req, res) => {
 });
 module.exports = route;
 
+//getting only the items from mongoDb
+
+route.get('/:id', (req, res) => {
+  Chat.findById(req.params.id)
+    .then(result => res.send(result))
+    .catch(err => err);
+});
+
 // posting a new item to mongoDb
 
 route.post('/', (req, res) => {
